@@ -1,0 +1,8 @@
+build/
+bin/
+build-msvc/
+*.user
+Debug/
+.vscode/
+data/
+log/

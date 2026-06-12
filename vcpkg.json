@@ -1,0 +1,13 @@
+{
+  "dependencies": [
+    {
+      "name": "plog",
+      "version>=": "1.1.10"
+    },
+    {
+        "name": "libdatachannel",
+        "version>=": "0.23.2",
+        "features": ["srtp"]
+    }
+  ]
+}
