@@ -1,108 +1,11 @@
 {
-  "version": 6,
+  "version": 2,
   "configurePresets": [
     {
-      "name": "mingw-debug",
-      "displayName": "Qt Debug",
-      "inherits": "dbg",
-      "generator": "MinGW Makefiles",
-      "cacheVariables": {
-        "CMAKE_PREFIX_PATH": "D:/instal_package/Qt/6.6.3/mingw_64",
-        "CMAKE_C_COMPILER": "D:/instal_package/Qt/Tools/mingw1120_64/bin/gcc.exe",
-        "CMAKE_CXX_COMPILER": "D:/instal_package/Qt/Tools/mingw1120_64/bin/g++.exe",
-        "CMAKE_MAKE_PROGRAM": "D:/instal_package/Qt/Tools/mingw1120_64/bin/mingw32-make.exe"
-      }
-    },
-    {
-      "name": "mingw-release",
-      "displayName": "Qt Release",
-      "inherits": "rel",
-      "generator": "MinGW Makefiles",
-      "cacheVariables": {
-        "CMAKE_PREFIX_PATH": "D:/instal_package/Qt/6.6.3/mingw_64",
-        "CMAKE_C_COMPILER": "D:/instal_package/Qt/Tools/mingw1120_64/bin/gcc.exe",
-        "CMAKE_CXX_COMPILER": "D:/instal_package/Qt/Tools/mingw1120_64/bin/g++.exe",
-        "CMAKE_MAKE_PROGRAM": "D:/instal_package/Qt/Tools/mingw1120_64/bin/mingw32-make.exe"
-      }
-    },
-    {
-      "name": "msvc-debug",
-      "displayName": "MSVC Ninja Debug",
-      "inherits": "dbg",
-      "generator": "Ninja",
+      "name": "default",
+      "inherits": "vcpkg",
       "environment": {
-        "VCPKG_ROOT": "E:\\3rd\\vcpkg",
-        "RC": "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe",
-        "WindowsSdkDir": "C:\\Program Files (x86)\\Windows Kits\\10\\",
-        "WindowsSDKVersion": "10.0.26100.0\\",
-        "UniversalCRTSdkDir": "C:\\Program Files (x86)\\Windows Kits\\10\\",
-        "UCRTVersion": "10.0.26100.0",
-        "INCLUDE": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\include;D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include;D:\\instal_package\\visualstudio\\VC\\Auxiliary\\VS\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\cppwinrt;$penv{INCLUDE}",
-        "LIB": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\lib\\x64;D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\um\\x64;$penv{LIB}",
-        "PATH": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64;D:\\instal_package\\visualstudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64;$penv{PATH}",
-        "VCPKG_KEEP_ENV_VARS": "PERL;RC;PATH;INCLUDE;LIB"
-      },
-      "cacheVariables": {
-        "CMAKE_PREFIX_PATH": "D:/instal_package/Qt/6.6.3/msvc2019_64",
-        "CMAKE_C_COMPILER": "D:/instal_package/visualstudio/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe",
-        "CMAKE_CXX_COMPILER": "D:/instal_package/visualstudio/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe",
-        "CMAKE_MAKE_PROGRAM": "D:/instal_package/visualstudio/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
-        "VCPKG_INSTALLED_DIR": "${sourceDir}/build/vcpkg_installed",
-        "VCPKG_MANIFEST_INSTALL": "ON"
-      }
-    },
-    {
-      "name": "msvc-release",
-      "displayName": "MSVC Ninja Release",
-      "inherits": "rel",
-      "generator": "Ninja",
-      "environment": {
-        "RC": "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe",
-        "WindowsSdkDir": "C:\\Program Files (x86)\\Windows Kits\\10\\",
-        "WindowsSDKVersion": "10.0.26100.0\\",
-        "UniversalCRTSdkDir": "C:\\Program Files (x86)\\Windows Kits\\10\\",
-        "UCRTVersion": "10.0.26100.0",
-        "INCLUDE": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\include;D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include;D:\\instal_package\\visualstudio\\VC\\Auxiliary\\VS\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\cppwinrt;$penv{INCLUDE}",
-        "LIB": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\lib\\x64;D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\um\\x64;$penv{LIB}",
-        "PATH": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64;D:\\instal_package\\visualstudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64;$penv{PATH}"
-      },
-      "cacheVariables": {
-        "CMAKE_PREFIX_PATH": "D:/instal_package/Qt/6.6.3/msvc2019_64",
-        "CMAKE_C_COMPILER": "D:/instal_package/visualstudio/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe",
-        "CMAKE_CXX_COMPILER": "D:/instal_package/visualstudio/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe",
-        "CMAKE_MAKE_PROGRAM": "D:/instal_package/visualstudio/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe"
-      }
-    }
-  ],
-  "buildPresets": [
-    {
-      "name": "mingw-debug",
-      "displayName": "Build Qt Debug",
-      "configurePreset": "mingw-debug"
-    },
-    {
-      "name": "mingw-release",
-      "displayName": "Build Qt Release",
-      "configurePreset": "mingw-release"
-    },
-    {
-      "name": "msvc-debug",
-      "displayName": "Build MSVC Ninja Debug",
-      "configurePreset": "msvc-debug",
-      "environment": {
-        "INCLUDE": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\include;D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include;D:\\instal_package\\visualstudio\\VC\\Auxiliary\\VS\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\cppwinrt;$penv{INCLUDE}",
-        "LIB": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\lib\\x64;D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\um\\x64;$penv{LIB}",
-        "PATH": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64;D:\\instal_package\\visualstudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64;$penv{PATH}"
-      }
-    },
-    {
-      "name": "msvc-release",
-      "displayName": "Build MSVC Ninja Release",
-      "configurePreset": "msvc-release",
-      "environment": {
-        "INCLUDE": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\include;D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include;D:\\instal_package\\visualstudio\\VC\\Auxiliary\\VS\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\cppwinrt;$penv{INCLUDE}",
-        "LIB": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\lib\\x64;D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\um\\x64;$penv{LIB}",
-        "PATH": "D:\\instal_package\\visualstudio\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64;D:\\instal_package\\visualstudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64;$penv{PATH}"
+        "VCPKG_ROOT": "/pkg/vcpkg"
       }
     }
   ]

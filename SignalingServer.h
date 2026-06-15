@@ -1,29 +1,37 @@
 #ifndef SIGNALINGSERVER_H
 #define SIGNALINGSERVER_H
 
-#include <QAbstractSocket>
-#include <QByteArray>
-#include <QHostAddress>
-#include <QObject>
-#include <QString>
+#include <cstdint>
+#include <memory>
+#include <mutex>
+#include <string>
+#include <unordered_set>
+#include <unordered_map>
 
-class QWebSocketServer;
-class QWebSocket;
-class SignalingServer : public QObject {
-	Q_OBJECT
+#include <rtc/rtc.hpp>
+
+class SignalingServer {
 public:
-	explicit SignalingServer(QObject *parent = nullptr);
-	bool listen(const QHostAddress &address = QHostAddress::Any, quint16 port = 0);
-private slots:
-	void onNewConnection();
-	void onDisconnected();
-	void onWebSocketError(QAbstractSocket::SocketError error);
-	void onBinaryMessageReceived(const QByteArray &message);
-	void onTextMessageReceived(const QString &message);
+	SignalingServer();
+	~SignalingServer();
+
+	bool listen(const std::string &address = "0.0.0.0", uint16_t port = 0);
+	void stop();
+	uint16_t port() const;
 
 private:
-	QWebSocketServer *server;
-	QMap<QString, QWebSocket *> clients;
+	void onClient(std::shared_ptr<rtc::WebSocket> client);
+	void onDisconnected(std::string clientId, const std::shared_ptr<rtc::WebSocket> &client);
+	void onMessage(const std::string &clientId, const std::shared_ptr<rtc::WebSocket> &client,
+	               rtc::message_variant message);
+
+	static std::string clientIdFromPath(const std::shared_ptr<rtc::WebSocket> &client);
+
+private:
+	std::shared_ptr<rtc::WebSocketServer> server;
+	std::unordered_map<std::string, std::shared_ptr<rtc::WebSocket>> clients;
+	std::unordered_set<std::shared_ptr<rtc::WebSocket>> pendingClients;
+	mutable std::mutex clientsMutex;
 };
 
 #endif // SIGNALINGSERVER_H

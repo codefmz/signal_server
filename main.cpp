@@ -1,14 +1,38 @@
 #include "SignalingServer.h"
-#include <QCoreApplication>
 
-int main(int argc, char *argv[]) {
-	QCoreApplication a(argc, argv);
+#include <atomic>
+#include <csignal>
+#include <chrono>
+#include <iostream>
+#include <thread>
+
+namespace {
+
+std::atomic_bool running{true};
+
+void handleSignal(int) {
+	running = false;
+}
+
+} // namespace
+
+int main() {
+	std::signal(SIGINT, handleSignal);
+	std::signal(SIGTERM, handleSignal);
+
 	SignalingServer server;
-	if (server.listen(QHostAddress("127.0.0.1"), 8000)) {
-		qInfo() << "Listening on 127.0.0.1:8000";
-		qInfo() << "server listening on 127.0.0.1:8000";
+	if (server.listen("127.0.0.1", 8000)) {
+		std::cout << "Listening on 127.0.0.1:" << server.port() << std::endl;
 	} else {
-		qDebug() << "[Errno 10000] error while attempting to bind on address ('127.0.0.1', 8000)";
+		std::cerr << "[Errno 10000] error while attempting to bind on address ('127.0.0.1', 8000)"
+		          << std::endl;
+		return 1;
 	}
-	return a.exec();
+
+	while (running) {
+		std::this_thread::sleep_for(std::chrono::milliseconds(200));
+	}
+
+	server.stop();
+	return 0;
 }
